@@ -3,38 +3,26 @@
 #include <sstream>
 #include <iostream>
 
-ReadingProcess::ReadingProcess(std::vector<ComputingProcess>& processosSistema)
-    : processos(processosSistema) {}
+ReadingProcess::ReadingProcess(int pid, std::vector<Process*>& fila)
+: Process(pid), fila(fila) {}
 
-void ReadingProcess::load(const std::string& filename) {
-    std::ifstream file(filename);
+void ReadingProcess::execute() {
+    std::ifstream file("computation.txt");
     if (!file.is_open()) {
-        std::cerr << "Erro ao abrir o arquivo para leitura." << std::endl;
+        std::cerr << "Erro ao abrir computation.txt\n";
         return;
     }
 
     std::string linha;
-    while (std::getline(file, linha)) {
-        if (linha.empty()) continue;
-
-        double val1 = 0.0, val2 = 0.0;
-        char operador = 0;
-
+    int pidGerado = getPID() + 1;
+    while (getline(file, linha)) {
         std::istringstream iss(linha);
-        if (!(iss >> val1 >> operador >> val2)) {
-            std::cerr << "Formato inválido na linha: " << linha << std::endl;
-            continue;
+        double v1, v2;
+        char op;
+        if (iss >> v1 >> op >> v2) {
+            fila.push_back(new ComputingProcess(pidGerado++, v1, v2, op));
         }
-
-        ComputingProcess proc(val1, val2, operador);
-        processos.push_back(proc);
     }
-    file.close();
 
-    // Limpa o conteúdo do arquivo após a leitura
-    std::ofstream ofs(filename, std::ios::trunc);
-    if (!ofs.is_open()) {
-        std::cerr << "Erro ao limpar o arquivo." << std::endl;
-    }
-    ofs.close();
+    std::ofstream clean("computation.txt", std::ios::trunc);
 }

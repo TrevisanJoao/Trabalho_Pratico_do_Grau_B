@@ -9,7 +9,7 @@ private:
     double val1, val2;
     char operador;
 public:
-    ComputingProcess(double val1, double val2, char operador);
+    ComputingProcess(int pid,double val1, double val2, char operador);
     ~ComputingProcess();
     double getVal1();
     void setVal1(double val1);
@@ -17,7 +17,7 @@ public:
     void setVal2(double val2);
     char getOperador();
     void setOperador(char operador);
-
+    void execute() override;
     void perguntaOperacao();
 };
 

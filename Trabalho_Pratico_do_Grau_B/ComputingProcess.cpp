@@ -3,12 +3,8 @@
 #include <iomanip> // para setar precisão de fracionarios
 using namespace std;
 
-ComputingProcess::ComputingProcess(double val1, double val2, char operador) {
-    this->val1 = val1;
-    this->val2 = val2;
-    this->operador = operador;
-}
-
+ComputingProcess::ComputingProcess(int pid, double val1, double val2, char operador)
+: Process(pid), val1(val1), val2(val2), operador(operador) {}
 ComputingProcess::~ComputingProcess() {}
 
 double ComputingProcess::getVal1() {
@@ -61,4 +57,8 @@ void ComputingProcess::perguntaOperacao() {
             std::cout << "Operador invalido!" << std::endl;
     }
 
+}
+void ComputingProcess::execute(){
+    cout << "Executando ComputingProcess: ";
+    perguntaOperacao();
 }

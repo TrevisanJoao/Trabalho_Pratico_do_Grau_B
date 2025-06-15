@@ -3,14 +3,21 @@
 #define PROCESS_H
 class Process
 {
-private:
+protected:
     int pid;
 public:
     Process(int pid);
-    ~Process();
-    void execute();
-    int getPID();
+    virtual ~Process();
+
+	// Getters
+    int getPID() const;
+
+	// Setters
     void setPID(int pid);
+
+	// Metodos
+    virtual void execute() = 0;
+
 };
 
 #endif

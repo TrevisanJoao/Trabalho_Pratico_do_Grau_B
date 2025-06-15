@@ -2,20 +2,23 @@
 #ifndef READINGPROCESS_H
 #define READINGPROCESS_H
 
+#include "Process.h"
 #include <vector>
 #include <string>
 #include "ComputingProcess.h"
 
-class ReadingProcess {
+class ReadingProcess : public Process{
+private:
+    std::vector<Process*>& fila;
 public:
+
     // Construtor recebe referência para o vetor de processos do sistema
-    ReadingProcess(std::vector<ComputingProcess>& processosSistema);
+    ReadingProcess(int pid, std::vector<Process*>& fila);
 
     // Método para ler e carregar processos do arquivo
-    void load(const std::string& filename = "computation.txt");
+    void execute() override;
 
-private:
-    std::vector<ComputingProcess>& processos;
+
 };
 
 #endif
