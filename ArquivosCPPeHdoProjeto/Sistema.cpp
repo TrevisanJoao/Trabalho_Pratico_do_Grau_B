@@ -5,6 +5,7 @@
 #include "PrintingProcess.h"
 #include <iostream>
 #include <fstream>
+
 using namespace std;
 
 // Construtor
@@ -22,7 +23,7 @@ Sistema::~Sistema() {
 // Criar processo
 void Sistema::criarProcesso() {
     int tipo;
-    cout << "Tipo de processo:\n[1] Writing\n[2] Reading\n[3] Printing\n[4] Computing\nEscolha: ";
+    cout << "Tipo de processo:\n[1] Escrita (WritingProcess)\n[2] Leitura (ReadingProcess)\n[3] Impressao (PrintingProcess)\n[4] Calculo (ComputingProcess)\nEscolha: ";
     cin >> tipo;
 
     switch (tipo) {
@@ -133,7 +134,7 @@ void Sistema::imprimirFila() {
 
     cout << "Fila atual de processos:\n";
     for (auto p : fila) {
-        cout << "PID: " << p->getPID() << endl;
+        cout << "PID: " << p->getPID() << " - Tipo: " << p->getTipo() << endl;
     }
 }
 

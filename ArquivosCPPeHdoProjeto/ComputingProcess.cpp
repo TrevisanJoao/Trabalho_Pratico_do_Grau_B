@@ -32,6 +32,10 @@ void ComputingProcess::setOperador(char operador) {
     this->operador = operador;
 }
 
+std::string ComputingProcess::getTipo() const {
+    return "ComputingProcess";
+}
+
 void ComputingProcess::execute() {
     cout << "Executando ComputingProcess: ";
     cout << fixed << setprecision(2);

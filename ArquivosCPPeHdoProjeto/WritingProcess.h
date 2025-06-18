@@ -15,7 +15,7 @@ public:
 	~WritingProcess();
 
 	// Metodos
-
+    std::string getTipo() const;
 	void escreveExpressao(const std::string& expressao);
 	void execute() override;
 };

@@ -19,6 +19,7 @@ public:
     void setOperador(char operador);
     void execute() override;
     void perguntaOperacao();
+    std::string getTipo() const;
 };
 
 #endif

@@ -1,6 +1,7 @@
 // Uma classe abstrata que contem o metodo abstrato 'execute()'
 #ifndef PROCESS_H
 #define PROCESS_H
+#include <string>
 class Process
 {
 protected:
@@ -11,6 +12,7 @@ public:
 
     // Getters
     int getPID() const;
+    virtual std::string getTipo() const  = 0; // metodo para determinar o tipo de processo
 
     // Setters
     void setPID(int pid);

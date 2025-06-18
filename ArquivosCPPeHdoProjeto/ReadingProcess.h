@@ -15,6 +15,8 @@ public:
     // Construtor recebe referência para o vetor de processos do sistema
     ReadingProcess(int pid, std::vector<Process*>& fila);
 
+    std::string getTipo() const;
+
     // Método para ler e carregar processos do arquivo
     void execute() override;
 

@@ -20,6 +20,10 @@ void WritingProcess::escreveExpressao(const string& expressao) {
     file.close();
 }
 
+std::string WritingProcess::getTipo() const {
+    return "WritingProcess";
+}
+
 
 void WritingProcess::execute() {
     cout << "Executando WritingProcess..." << endl;

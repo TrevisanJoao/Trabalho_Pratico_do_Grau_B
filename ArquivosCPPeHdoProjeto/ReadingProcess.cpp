@@ -8,6 +8,10 @@ ReadingProcess::ReadingProcess(int pid, std::vector<Process*>& fila)
     std::cout << "ReadingProcess criado (PID=" << pid << ").\n";
 }
 
+std::string ReadingProcess::getTipo() const {
+    return "ReadingProcess";
+}
+
 void ReadingProcess::execute() {
     std::ifstream file("computation.txt");
     if (!file.is_open()) {
