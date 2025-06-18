@@ -5,7 +5,7 @@
 #include "PrintingProcess.h"
 #include <iostream>
 #include <fstream>
-
+#include <limits>
 using namespace std;
 
 // Construtor
@@ -143,7 +143,14 @@ void Sistema::menu() {
     int opcao;
     do {
         cout << "\n[1] Criar processo\n[2] Executar próximo\n[3] Executar específico\n[4] Salvar fila\n[5] Carregar fila\n[6] Imprimir fila\n[7] Sair\n";
-        cin >> opcao;
+        if (!(cin >> opcao)) { // leitura falhou (ex: string)
+            cout << "Entrada invalida. Por favor, digite um numero.\n";
+            cin.clear(); // limpa o estado de erro
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // descarta a linha inválida
+            opcao = 0; // opcao inválida para evitar sair
+            continue; // volta ao início do loop para pedir novamente
+        }
+
         switch (opcao) {
         case 1: criarProcesso(); break;
         case 2: executarProximo(); break;
